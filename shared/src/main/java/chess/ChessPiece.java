@@ -53,8 +53,16 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        RookMovesCalculator rookMoves = new RookMovesCalculator(board, myPosition);
-        return rookMoves.pieceMoves(board, myPosition);
+        switch (type) {
+            case BISHOP:
+                BishopMovesCalculator bishopMoves = new BishopMovesCalculator(board, myPosition);
+                return bishopMoves.pieceMoves(board, myPosition);
+            case ROOK:
+                RookMovesCalculator rookMoves = new RookMovesCalculator(board, myPosition);
+                return rookMoves.pieceMoves(board, myPosition);
+            default:
+                return new ArrayList<>();
+        }
 
     }
 }
