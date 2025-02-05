@@ -18,7 +18,7 @@ public class BishopMovesCalculator implements MovesCalculator {
         Collection<ChessMove> bishopMoves = new ArrayList<>();
         int i = myPosition.getRow();
         int j = myPosition.getColumn();
-        while (i < 8 && j < 8) {
+        while (isValidMove(i+1, j+1)) {
             i++; j++;
             if (board.getPiece(new ChessPosition(i, j)) != null) {
                 ChessPiece otherPiece= board.getPiece(new ChessPosition(i, j));
@@ -32,7 +32,7 @@ public class BishopMovesCalculator implements MovesCalculator {
         }
         i = myPosition.getRow();
         j = myPosition.getColumn();
-        while (i > 1 && j < 8) {
+        while (isValidMove(i-1, j+1)) {
             i--; j++;
             if (board.getPiece(new ChessPosition(i, j)) != null) {
                 ChessPiece otherPiece= board.getPiece(new ChessPosition(i, j));
@@ -46,7 +46,7 @@ public class BishopMovesCalculator implements MovesCalculator {
         }
         i = myPosition.getRow();
         j = myPosition.getColumn();
-        while (i < 8 && j > 1) {
+        while (isValidMove(i+1, j-1)) {
             i++; j--;
             if (board.getPiece(new ChessPosition(i, j)) != null) {
                 ChessPiece otherPiece= board.getPiece(new ChessPosition(i, j));
@@ -60,7 +60,7 @@ public class BishopMovesCalculator implements MovesCalculator {
         }
         i = myPosition.getRow();
         j = myPosition.getColumn();
-        while (i > 1 && j > 1) {
+        while (isValidMove(i-1, j-1)) {
             i--; j--;
             if (board.getPiece(new ChessPosition(i, j)) != null) {
                 ChessPiece otherPiece= board.getPiece(new ChessPosition(i, j));
@@ -73,5 +73,14 @@ public class BishopMovesCalculator implements MovesCalculator {
             bishopMoves.add(new ChessMove(myPosition, new ChessPosition(i, j), null));
         }
         return bishopMoves;
+    }
+    Boolean isValidMove(int row, int col) {
+        if (row < 1 || row > 8) {
+            return false;
+        }
+        if (col < 1 || col > 8) {
+            return false;
+        }
+        return true;
     }
 }
