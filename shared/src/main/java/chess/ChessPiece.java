@@ -67,6 +67,10 @@ public class ChessPiece {
                 KingMovesCalculator kingMoves = new KingMovesCalculator(board, myPosition);
                 yield kingMoves.pieceMoves(board, myPosition);
             }
+            case QUEEN -> {
+                QueenMovesCalculator queenMoves = new QueenMovesCalculator(board, myPosition);
+                yield queenMoves.pieceMoves(board, myPosition);
+            }
             default -> new ArrayList<>();
         };
 
