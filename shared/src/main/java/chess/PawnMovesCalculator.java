@@ -48,6 +48,7 @@ public class PawnMovesCalculator implements MovesCalculator{
         return pawnMoves;
     }
 
+    //used for a normal move
     boolean normalMove(int row, int col, ChessGame.TeamColor myColor) {
         if (myColor == BLACK && isValid(row-1, col)) {
             return true;
