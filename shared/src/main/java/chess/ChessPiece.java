@@ -75,7 +75,10 @@ public class ChessPiece {
                 KnightMovesCalculator knightMoves = new KnightMovesCalculator();
                 yield knightMoves.pieceMoves(board, myPosition);
             }
-            default -> new ArrayList<>();
+            case PAWN -> {
+                PawnMovesCalculator pawnMoves = new PawnMovesCalculator();
+                yield pawnMoves.pieceMoves(board, myPosition);
+            }
         };
 
     }
